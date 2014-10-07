@@ -16,8 +16,8 @@ import game.app.Hexa;
  * @author alunoruy
  */
 public class Jogador extends Item{
-    private int DIRECAO;
-    private final int INTERVALO = 100;
+    //private int DIRECAO;
+    //private final int INTERVALO = 100;
     PosicaoRender pr;
     
     public Jogador(int x, int y) {

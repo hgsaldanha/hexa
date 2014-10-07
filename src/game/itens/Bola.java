@@ -7,6 +7,7 @@
 package game.itens;
 
 import engine.core.Game;
+import engine.core.GameController;
 import engine.itens.Item;
 import game.app.Hexa;
 import java.util.Random;
@@ -32,9 +33,16 @@ public class Bola extends Item {
     
     @Override
     public void animar() {
+        Item goleiro = null;
         moverPara(new Random().nextInt(Game.LARGURA_TELA), Game.ALTURA_TELA, Hexa.getInstance().getVelocidadeBola());
-        while(getY() < Game.ALTURA_TELA){
+        while(getY() < Game.ALTURA_TELA && goleiro == null){
+            goleiro = GameController.getInstance().getColisaoItem(Goleiro.class, this);
             pausar(100);
+        }
+        if (goleiro != null) {
+            //defesa
+            Hexa.getInstance().setVelocidadeBola(-1);
+            System.out.println("defesa");
         }
         getJogador().setVisible(false);
         setVisible(false);

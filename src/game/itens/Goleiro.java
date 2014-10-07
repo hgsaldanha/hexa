@@ -24,7 +24,7 @@ public class Goleiro extends Item {
         super("goleiro.gif", x, y);
         this.addImagem(IMAGEM_GOLEIRO_DIREITA, "goleiro.gif");
         this.addImagem(IMAGEM_GOLEIRO_ESQUERDA, "goleiro.gif");
-        setDeslocamento(10);
+        setDeslocamento(25);
     }
 
     @Override
