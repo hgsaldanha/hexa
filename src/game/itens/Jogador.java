@@ -6,6 +6,7 @@
 
 package game.itens;
 
+import engine.core.Game;
 import engine.itens.Item;
 import engine.itens.PosicaoRender;
 import game.app.Hexa;
@@ -21,7 +22,7 @@ public class Jogador extends Item{
     PosicaoRender pr;
     
     public Jogador(int x, int y) {
-        super("goleiro.gif", x, y);
+        super("correndo.gif", x, y);
         setDeslocamento(1);
         iniciarAnimacao();
     }
@@ -37,8 +38,8 @@ public class Jogador extends Item{
 
     @Override
     public void animar() {
-        moverPara(getX(), 355, Hexa.getInstance().getVelocidadeJogador());
-        while (getY() < 350) {
+        moverPara(getX(), Game.ALTURA_TELA - 400, Hexa.getInstance().getVelocidadeJogador());
+        while (getY() < Game.ALTURA_TELA - 410) {
             pausar(100);
         }
         chutar(new Bola(getX(),getY()));

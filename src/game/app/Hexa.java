@@ -16,6 +16,7 @@ import engine.renders.WindowRender;
 import game.controladores.Jogadores;
 import game.itens.Estadio;
 import game.itens.Goleiro;
+import game.itens.Trave;
 import java.util.Collection;
 import java.util.Random;
 
@@ -27,18 +28,20 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     private static Hexa instance;
     private Estadio estadio;
     private Goleiro goleiro;
+    private Trave trave;
     public Collection<Posicao> posicao;
     public PosicaoRender mapa;
     private Jogadores jogadores;
     private int velocidadeJogador = 15;
     private int velocidadeBola = 15;
     private int velocidadeGoleiro = 10;
+    private int areaDeChute = 500;
     //private Bola bola;
 
     
     public Hexa() {
         
-        Game.ALTURA_TELA = 700;
+        Game.ALTURA_TELA = 675;
         Game.LARGURA_TELA = 1200;
         
         estadio = new Estadio();
@@ -46,7 +49,8 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         jogadores = new Jogadores();
         
         //hulk = new Hulk(mapa,25);
-        goleiro = new Goleiro(Game.LARGURA_TELA/2,Game.ALTURA_TELA-90);
+        goleiro = new Goleiro(Game.LARGURA_TELA/2,Game.ALTURA_TELA-120);
+        trave = new Trave((Game.LARGURA_TELA-360)/2, Game.ALTURA_TELA - 110);
     }
     
     public static Hexa getInstance() {
@@ -59,6 +63,7 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         estadio.iniciarAnimacao();
         //hulk.iniciarAnimacao();
         goleiro.iniciarAnimacao();
+        trave.iniciarAnimacao();
         
         WindowRender window = new WindowRender(this, this);
         window.setVisible(true);
@@ -132,7 +137,8 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     }
 
     public void setVelocidadeBola(int velocidadeBola) {
-        this.velocidadeBola += velocidadeBola;
+        if (getVelocidadeBola() >= 5)
+            this.velocidadeBola += velocidadeBola;
     }
 
     public int getVelocidadeJogador() {
@@ -149,6 +155,10 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
 
     public void setVelocidadeGoleiro(int velocidadeGoleiro) {
         this.velocidadeGoleiro = velocidadeGoleiro;
+    }
+
+    public int getAreaDeChute() {
+        return areaDeChute;
     }
     
     

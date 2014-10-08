@@ -15,15 +15,15 @@ import game.app.Hexa;
 public class Goleiro extends Item {
 
     public static String IMAGEM_GOLEIRO_DIREITA = "IMAGEM_GOLEIRO_DIREITA";
-    public static String IMAGEM_GOLEIRO_ESQUERDA = "IMAGEM_GOLEIRO_ESQUERDAf";
+    public static String IMAGEM_GOLEIRO_ESQUERDA = "IMAGEM_GOLEIRO_ESQUERDA";
     public static String IMAGEM_GOLEIRO_PARADO = "IMAGEM_GOLEIRO_PARADO";
     public static String IMAGEM_COMEMORACAO = "IMAGEM_COMEMORACAO";
     private double qtdeBolas;
 
     public Goleiro(int x, int y) {
         super("goleiro.gif", x, y);
-        this.addImagem(IMAGEM_GOLEIRO_DIREITA, "goleiro.gif");
-        this.addImagem(IMAGEM_GOLEIRO_ESQUERDA, "goleiro.gif");
+        this.addImagem(IMAGEM_GOLEIRO_DIREITA, "goleiro-direita.gif");
+        this.addImagem(IMAGEM_GOLEIRO_ESQUERDA, "goleiro-esquerda.gif");
         setDeslocamento(25);
     }
 

@@ -34,7 +34,7 @@ public class Bola extends Item {
     @Override
     public void animar() {
         Item goleiro = null;
-        moverPara(new Random().nextInt(Game.LARGURA_TELA), Game.ALTURA_TELA, Hexa.getInstance().getVelocidadeBola());
+        moverPara(new Random().nextInt(Hexa.getInstance().getAreaDeChute()) + ((Game.LARGURA_TELA - Hexa.getInstance().getAreaDeChute()) / 2), Game.ALTURA_TELA, Hexa.getInstance().getVelocidadeBola());
         while(getY() < Game.ALTURA_TELA && goleiro == null){
             goleiro = GameController.getInstance().getColisaoItem(Goleiro.class, this);
             pausar(100);
