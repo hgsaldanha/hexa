@@ -46,7 +46,7 @@ public class Bola extends Item {
             else{
             //Gol
             }
-            
+        }
                 
         if (goleiro != null) {
             //defesa
