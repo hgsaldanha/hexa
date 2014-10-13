@@ -34,16 +34,26 @@ public class Bola extends Item {
     @Override
     public void animar() {
         Item goleiro = null;
+        Item trave = null;
         moverPara(new Random().nextInt(Hexa.getInstance().getAreaDeChute()) + ((Game.LARGURA_TELA - Hexa.getInstance().getAreaDeChute()) / 2), Game.ALTURA_TELA, Hexa.getInstance().getVelocidadeBola());
         while(getY() < Game.ALTURA_TELA && goleiro == null){
             goleiro = GameController.getInstance().getColisaoItem(Goleiro.class, this);
             pausar(100);
-        }
+            if (GameController.getInstance().colisaoItem(this, trave)){
+            //Bola na Trave
+                
+            }
+            else{
+            //Gol
+            }
+            
+                
         if (goleiro != null) {
             //defesa
             Hexa.getInstance().setVelocidadeBola(-1);
             System.out.println("defesa");
         }
+        
         getJogador().setVisible(false);
         setVisible(false);
 
