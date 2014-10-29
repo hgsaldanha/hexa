@@ -8,19 +8,18 @@ package game.itens;
 
 import engine.core.GameController;
 import engine.itens.Item;
-import engine.itens.PosicaoRender;
 
 /**
  *
  * @author elane
  */
 public class Cenario extends Item{
-private Placar placar;
+private Placar2 placar;
 
     public Cenario() {
         super("estadio.png", 0, -1420);
         setDeslocamento(1);
-        placar = new Placar();
+        placar = new Placar2();
     }
     
     @Override

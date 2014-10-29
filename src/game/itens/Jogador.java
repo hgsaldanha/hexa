@@ -16,7 +16,7 @@ import game.app.Hexa;
  *
  * @author alunoruy
  */
-public class Jogador extends Item{
+public class Jogador extends Item {
     //private int DIRECAO;
     //private final int INTERVALO = 100;
     PosicaoRender pr;
@@ -42,7 +42,7 @@ public class Jogador extends Item{
         while (getY() < Game.ALTURA_TELA - 410) {
             pausar(100);
         }
-        chutar(new Bola(getX(),getY()));
+        chutar(new Bola(getX(),getY()+100));
     }
     
     public void chutar(Bola b) {

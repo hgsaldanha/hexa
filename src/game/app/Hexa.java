@@ -16,6 +16,7 @@ import engine.renders.WindowRender;
 import game.controladores.Jogadores;
 import game.itens.Estadio;
 import game.itens.Goleiro;
+import game.itens.Placar;
 import game.itens.Trave;
 import java.util.Collection;
 import java.util.Random;
@@ -26,6 +27,7 @@ import java.util.Random;
  */
 public class Hexa implements EventosDoTeclado,EventosDoRender{
     private static Hexa instance;
+    private Placar placar;
     private Estadio estadio;
     private Goleiro goleiro;
     private Trave trave;
@@ -36,16 +38,15 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     private int velocidadeBola = 15;
     private int velocidadeGoleiro = 10;
     private int areaDeChute = 500;
-    //private Bola bola;
+    private WindowRender window;
 
     
     public Hexa() {
-        
         Game.ALTURA_TELA = 675;
         Game.LARGURA_TELA = 1200;
         
         estadio = new Estadio();
-        
+        placar = new Placar((Game.LARGURA_TELA-300)/2, 10);
         jogadores = new Jogadores();
         
         //hulk = new Hulk(mapa,25);
@@ -60,12 +61,13 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     }
     
     public void iniciar() {
+        window = new WindowRender(this, this);
         estadio.iniciarAnimacao();
         //hulk.iniciarAnimacao();
         goleiro.iniciarAnimacao();
         trave.iniciarAnimacao();
+        placar.iniciarAnimacao();
         
-        WindowRender window = new WindowRender(this, this);
         window.setVisible(true);
         Game.gameInit();
         
@@ -160,6 +162,9 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     public int getAreaDeChute() {
         return areaDeChute;
     }
-    
+
+    public WindowRender getWindow() {
+        return window;
+    }
     
 }
