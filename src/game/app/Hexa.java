@@ -17,6 +17,7 @@ import game.controladores.Jogadores;
 import game.itens.Estadio;
 import game.itens.Goleiro;
 import game.itens.Placar;
+import game.itens.Poste;
 import game.itens.Trave;
 import java.util.Collection;
 import java.util.Random;
@@ -31,6 +32,7 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     private Estadio estadio;
     private Goleiro goleiro;
     private Trave trave;
+    private Poste poste_esquerdo, poste_direito;
     public Collection<Posicao> posicao;
     public PosicaoRender mapa;
     private Jogadores jogadores;
@@ -51,7 +53,9 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         
         //hulk = new Hulk(mapa,25);
         goleiro = new Goleiro(Game.LARGURA_TELA/2,Game.ALTURA_TELA-120);
-        trave = new Trave((Game.LARGURA_TELA-360)/2, Game.ALTURA_TELA - 110);
+        //trave = new Trave((Game.LARGURA_TELA-360)/2, Game.ALTURA_TELA - 110);
+        poste_direito = new Poste((Game.LARGURA_TELA-274)/2, Game.ALTURA_TELA - 45);
+        poste_esquerdo = new Poste((Game.LARGURA_TELA-274)/2+267, Game.ALTURA_TELA - 45);
     }
     
     public static Hexa getInstance() {
@@ -65,7 +69,9 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         estadio.iniciarAnimacao();
         //hulk.iniciarAnimacao();
         goleiro.iniciarAnimacao();
-        trave.iniciarAnimacao();
+        //trave.iniciarAnimacao();
+        poste_direito.iniciarAnimacao();
+        poste_esquerdo.iniciarAnimacao();
         placar.iniciarAnimacao();
         
         window.setVisible(true);
@@ -167,4 +173,7 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         return window;
     }
     
+    public Trave getTrave() {
+        return trave;
+    }
 }

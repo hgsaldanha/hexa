@@ -6,13 +6,14 @@
 package game.itens;
 
 import engine.itens.Item;
+import engine.itens.Obstaculo;
 import game.app.Hexa;
 
 /**
  *
  * @author alunoruy
  */
-public class Goleiro extends Item {
+public class Goleiro extends Item implements Obstaculo{
 
     public static String IMAGEM_GOLEIRO_DIREITA = "IMAGEM_GOLEIRO_DIREITA";
     public static String IMAGEM_GOLEIRO_ESQUERDA = "IMAGEM_GOLEIRO_ESQUERDA";
