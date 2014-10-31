@@ -14,6 +14,7 @@ import engine.itens.Posicao;
 import engine.itens.PosicaoRender;
 import engine.renders.WindowRender;
 import game.controladores.Jogadores;
+import game.itens.Bola;
 import game.itens.Estadio;
 import game.itens.Goleiro;
 import game.itens.Placar;
@@ -40,6 +41,7 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     private int velocidadeBola = 15;
     private int velocidadeGoleiro = 10;
     private int areaDeChute = 500;
+    private int linhaDoGolY;
     private WindowRender window;
 
     
@@ -53,9 +55,9 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         
         //hulk = new Hulk(mapa,25);
         goleiro = new Goleiro(Game.LARGURA_TELA/2,Game.ALTURA_TELA-120);
-        //trave = new Trave((Game.LARGURA_TELA-360)/2, Game.ALTURA_TELA - 110);
-        poste_direito = new Poste((Game.LARGURA_TELA-274)/2, Game.ALTURA_TELA - 45);
-        poste_esquerdo = new Poste((Game.LARGURA_TELA-274)/2+267, Game.ALTURA_TELA - 45);
+        linhaDoGolY = Game.ALTURA_TELA - 45;
+        poste_direito = new Poste((Game.LARGURA_TELA-274)/2, linhaDoGolY);
+        poste_esquerdo = new Poste((Game.LARGURA_TELA-274)/2+267, linhaDoGolY);
     }
     
     public static Hexa getInstance() {
@@ -175,5 +177,15 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
     
     public Trave getTrave() {
         return trave;
+    }
+
+    public int getLinhaDoGolY() {
+        return linhaDoGolY;
+    }
+    
+    public boolean isGol(Bola bola) {
+        if (bola.getX() > (poste_direito.getX() + poste_direito.getWidth()) && bola.getX() < poste_esquerdo.getX())
+            return true;
+        return false;
     }
 }

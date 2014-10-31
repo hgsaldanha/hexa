@@ -35,9 +35,8 @@ public class Bola extends Item {
     @Override
     public void animar() {
         Item item = null;
-        //Item poste = null;
         moverPara(new Random().nextInt(Hexa.getInstance().getAreaDeChute()) + ((Game.LARGURA_TELA - Hexa.getInstance().getAreaDeChute()) / 2), Game.ALTURA_TELA, Hexa.getInstance().getVelocidadeBola());
-        while(getY() < Game.ALTURA_TELA && item == null){
+        while(getY() < Hexa.getInstance().getLinhaDoGolY() && item == null){
             item = GameController.getInstance().getColisaoItem(this);
             pausar(5);
         }
@@ -48,9 +47,12 @@ public class Bola extends Item {
                 Hexa.getInstance().setVelocidadeBola(-1);
             } else if (item instanceof Poste) {
                 System.out.println("trave");
-            } else {
-                System.out.println("colisao");
             }
+        } else {
+            if (Hexa.getInstance().isGol(this))
+                System.out.println("Gol");
+            else
+                System.out.println("Fora");
         }
         
         getJogador().setVisible(false);
