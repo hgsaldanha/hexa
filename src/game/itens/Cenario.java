@@ -14,12 +14,10 @@ import engine.itens.Item;
  * @author elane
  */
 public class Cenario extends Item{
-private Placar2 placar;
-
+ 
     public Cenario() {
         super("estadio.png", 0, -1420);
         setDeslocamento(1);
-        placar = new Placar2();
     }
     
     @Override

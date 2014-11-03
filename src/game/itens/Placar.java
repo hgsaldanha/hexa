@@ -9,7 +9,6 @@ package game.itens;
 import engine.core.GameController;
 import engine.itens.Item;
 import game.app.Cronometro;
-import javax.swing.JLabel;
 
 /**
  *

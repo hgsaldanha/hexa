@@ -56,8 +56,9 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         //hulk = new Hulk(mapa,25);
         goleiro = new Goleiro(Game.LARGURA_TELA/2,Game.ALTURA_TELA-120);
         linhaDoGolY = Game.ALTURA_TELA - 45;
-        poste_direito = new Poste((Game.LARGURA_TELA-274)/2, linhaDoGolY);
         poste_esquerdo = new Poste((Game.LARGURA_TELA-274)/2+267, linhaDoGolY);
+        poste_direito = new Poste((Game.LARGURA_TELA-274)/2, linhaDoGolY);
+        trave = new Trave((Game.LARGURA_TELA-274)/2, linhaDoGolY);
     }
     
     public static Hexa getInstance() {
@@ -71,10 +72,10 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         estadio.iniciarAnimacao();
         //hulk.iniciarAnimacao();
         goleiro.iniciarAnimacao();
-        //trave.iniciarAnimacao();
         poste_direito.iniciarAnimacao();
         poste_esquerdo.iniciarAnimacao();
         placar.iniciarAnimacao();
+        trave.iniciarAnimacao();
         
         window.setVisible(true);
         Game.gameInit();
