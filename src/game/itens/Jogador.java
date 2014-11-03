@@ -7,6 +7,7 @@
 package game.itens;
 
 import engine.core.Game;
+import engine.core.GameController;
 import engine.itens.Item;
 import engine.itens.PosicaoRender;
 import game.app.Hexa;
@@ -39,12 +40,14 @@ public class Jogador extends Item {
 
     @Override
     public void animar() {
-        moverPara(getX(), Game.ALTURA_TELA - 400, Hexa.getInstance().getVelocidadeJogador());
-        while (getY() < Game.ALTURA_TELA - 410) {
-            pausar(100);
+        if (!GameController.getInstance().isFimJogo()) {
+            moverPara(getX(), Game.ALTURA_TELA - 400, Hexa.getInstance().getVelocidadeJogador());
+            while (getY() < Game.ALTURA_TELA - 410) {
+                pausar(100);
+            }
+            chutar(new Bola(getX(),getY()+50));
+            changeImagem("PARADO");
         }
-        chutar(new Bola(getX(),getY()+50));
-        changeImagem("PARADO");
     }
     
     public void chutar(Bola b) {

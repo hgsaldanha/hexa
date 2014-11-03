@@ -9,7 +9,6 @@ package game.itens;
 import engine.core.Game;
 import engine.core.GameController;
 import engine.itens.Item;
-import engine.itens.Obstaculo;
 import game.app.Hexa;
 import java.util.Random;
 
@@ -43,16 +42,12 @@ public class Bola extends Item {
         
         if (item != null) {
             if (item instanceof Goleiro) {
-                System.out.println("defesa");
                 Hexa.getInstance().setVelocidadeBola(-1);
             } else if (item instanceof Poste) {
-                System.out.println("trave");
+                
             }
         } else {
-            if (Hexa.getInstance().isGol(this))
-                System.out.println("Gol");
-            else
-                System.out.println("Fora");
+            Hexa.getInstance().isGol(this);
         }
         
         getJogador().setVisible(false);

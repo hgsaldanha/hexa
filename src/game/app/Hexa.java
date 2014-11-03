@@ -85,7 +85,7 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
             @Override
             public void run() {
                 try {
-                    while (!GameController.getInstance().fimjogo) {
+                    while (!GameController.getInstance().isFimJogo()) {
                         getJogadores().novoJogador(new Random().nextInt(Game.LARGURA_TELA/2)+Game.LARGURA_TELA/4);
                         Thread.sleep(3000);
                     }
@@ -184,9 +184,14 @@ public class Hexa implements EventosDoTeclado,EventosDoRender{
         return linhaDoGolY;
     }
     
-    public boolean isGol(Bola bola) {
-        if (bola.getX() > (poste_direito.getX() + poste_direito.getWidth()) && bola.getX() < poste_esquerdo.getX())
-            return true;
-        return false;
+    public void isGol(Bola bola) {
+        if (bola.getX() > (poste_direito.getX() + poste_direito.getWidth()) && bola.getX() < poste_esquerdo.getX()) {
+            placar.gol();
+            if (placar.getGols() >= 7 ) {
+                GameController.getInstance().setFimJogo(true);
+                System.out.println("Fim de jogo!");
+            }
+        }
+        System.out.println(placar.geSituacao());
     }
 }

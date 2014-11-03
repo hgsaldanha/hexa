@@ -44,5 +44,11 @@ public class Placar extends Item {
         }
     }
     
-    
+    public String geSituacao() {
+        StringBuilder str = new StringBuilder("Placar: ");
+        str.append(getGols());
+        str.append(" x 0 - Tempo: ");
+        str.append(cronometro.getTempo());
+        return str.toString();
+    }
 }
