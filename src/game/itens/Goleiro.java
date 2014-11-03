@@ -22,7 +22,7 @@ public class Goleiro extends Item implements Obstaculo{
     private double qtdeBolas;
 
     public Goleiro(int x, int y) {
-        super("goleiro.gif", x, y);
+        super("goleiro.png", x, y);
         this.addImagem(IMAGEM_GOLEIRO_DIREITA, "goleiro-direita.gif");
         this.addImagem(IMAGEM_GOLEIRO_ESQUERDA, "goleiro-esquerda.gif");
         setDeslocamento(25);
