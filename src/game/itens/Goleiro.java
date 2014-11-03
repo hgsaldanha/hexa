@@ -25,6 +25,7 @@ public class Goleiro extends Item implements Obstaculo{
         super("goleiro.png", x, y);
         this.addImagem(IMAGEM_GOLEIRO_DIREITA, "goleiro-direita.gif");
         this.addImagem(IMAGEM_GOLEIRO_ESQUERDA, "goleiro-esquerda.gif");
+        this.addImagem(IMAGEM_GOLEIRO_PARADO, "goleiro.png");
         setDeslocamento(25);
     }
 
@@ -46,12 +47,10 @@ public class Goleiro extends Item implements Obstaculo{
     }
 
     public void direita() {
-        this.changeImagem(IMAGEM_GOLEIRO_DIREITA);
         moverPara(getX()+getDeslocamento(), getY(), Hexa.getInstance().getVelocidadeGoleiro());
     }
 
     public void esquerda() {
-        this.changeImagem(IMAGEM_GOLEIRO_ESQUERDA);
         moverPara(getX()-getDeslocamento(), getY(), Hexa.getInstance().getVelocidadeGoleiro());
     }
 

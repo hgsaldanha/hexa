@@ -22,7 +22,8 @@ public class Jogador extends Item {
     PosicaoRender pr;
     
     public Jogador(int x, int y) {
-        super("correndo.gif", x, y);
+        super("jogador-alemanha.gif", x, y);
+        addImagem("PARADO", "jogador-alemanha-parado.gif");
         setDeslocamento(1);
         iniciarAnimacao();
     }
@@ -42,7 +43,8 @@ public class Jogador extends Item {
         while (getY() < Game.ALTURA_TELA - 410) {
             pausar(100);
         }
-        chutar(new Bola(getX(),getY()+100));
+        chutar(new Bola(getX(),getY()+50));
+        changeImagem("PARADO");
     }
     
     public void chutar(Bola b) {
